@@ -1,0 +1,48 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Random;
+
+public class GuessGame{
+
+     public static void main(String []args){
+        System.out.println("Think of a number from 10 - 99.");
+        System.out.println("Now add its digits.");
+        System.out.println("Substract what you found from your initial number.");
+        System.out.println("Check the matrix below and see which symbol corresponds to your number.");
+        System.out.println();
+        
+        String[] st = {"@", "$", "%", "&", "*", "-", "O", "£", "X"};
+        
+        Random rand = new Random();
+        int n = rand.nextInt(8);
+        
+        for (int i =1; i < 91 ; i ++){
+            System.out.print(i + ". ");
+            if(i%9==0){
+                System.out.print(st[n]+" ");
+            }else{
+            	Random rando = new Random();
+                int n1 = rando.nextInt(8);
+                System.out.print(st[n1] + " ");
+            }
+            
+            if (i <10){
+                System.out.print(" ");
+            }
+            if(i%10 ==0){
+                System.out.println();
+            }
+        }
+        
+        System.out.println("Ready? (Y or N)");
+        try {
+			BufferedReader br = new BufferedReader( new InputStreamReader(System.in));
+			String s = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        System.out.println("Your symbol is:" + st[n]);
+        
+     }
+}
